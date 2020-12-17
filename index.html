@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+    <div class="top"></div>
+    <div class="list">
+      <div v-for="disk in disks" class="container">
+        <img :src="disk.poster" alt="">
+        <h3>{{disk.title}}</h3>
+        <p>{{disk.author}}</p>
+        <p>{{disk.year}}</p>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/script.js" charset="utf-8"></script>
+  </body>
+</html>
