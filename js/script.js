@@ -2,7 +2,9 @@ var app= new Vue(
   {
     el:"#root",
     data: {
-      disks: [""]
+      disks: [],
+      selectedValue:"",
+      genres:[]
     },
     methods:{
 
@@ -13,12 +15,22 @@ var app= new Vue(
       axios
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then( function(result){
+        self.disks = result.data.response;
+
         //ordino i dischi per data
-        let disk = result.data.response;
-        disk.sort(function(a, b){
-          return a.title - b.title;
+        self.disks.sort(function(a, b){
+          if(a.year < b.year) return -1;
         });
-        self.disks = disk;
+
+        //generi
+        self.disks.forEach(
+          (element) => {
+            if(!self.genres.includes(element.genre)){
+              self.genres.push(element.genre);
+            }
+          }
+        );
+
         console.log(self.disks);
         }
       )

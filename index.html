@@ -9,15 +9,23 @@
   </head>
   <body>
     <div id="root">
-    <div class="top"></div>
-    <div class="list">
-      <div v-for="disk in disks" class="container">
-        <img :src="disk.poster" alt="disk.title">
-        <h3>{{disk.title}}</h3>
-        <p>{{disk.author}}</p>
-        <p>{{disk.year}}</p>
+      <div class="top">
+        <select v-model="selectedValue">
+          <option value="">Tutti i generi</option>
+          <option v-for="genre in genres" :value="genre">
+            {{genre}}
+          </option>
+        </select>
       </div>
-    </div>
+      <div class="list">
+        <div v-for="disk in disks" class="container"
+         v-if="disk.genre == selectedValue || selectedValue == ''">
+          <img :src="disk.poster" alt="disk.title">
+          <h3>{{disk.title}}</h3>
+          <p>{{disk.author}}</p>
+          <p>{{disk.year}}</p>
+        </div>
+      </div>
   </div>
 
 
